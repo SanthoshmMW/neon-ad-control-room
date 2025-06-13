@@ -13,10 +13,10 @@ export const DashboardHeader = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold cyber-text-glow">
-                OOH Command Center
+                Japan OOH Command Center
               </h1>
               <p className="text-muted-foreground">
-                Digital Out-of-Home Supply-Side Platform
+                Digital Out-of-Home Supply-Side Platform - Japan Market
               </p>
             </div>
           </div>
@@ -24,7 +24,7 @@ export const DashboardHeader = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2 text-sm">
               <div className="w-2 h-2 rounded-full bg-primary neon-pulse"></div>
-              <span className="text-primary">Live Inventory Feed</span>
+              <span className="text-primary">Live Japan Feed</span>
             </div>
             
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
@@ -34,11 +34,11 @@ export const DashboardHeader = () => {
               </div>
               <div className="flex items-center space-x-1">
                 <MapPin className="h-4 w-4" />
-                <span>Live Markets: 23</span>
+                <span>Japan Markets: 8</span>
               </div>
               <div className="flex items-center space-x-1">
                 <TrendingUp className="h-4 w-4" />
-                <span>+18.4% Fill Rate</span>
+                <span>+12.4% Fill Rate</span>
               </div>
             </div>
           </div>
