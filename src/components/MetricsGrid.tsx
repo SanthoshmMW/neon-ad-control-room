@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -102,7 +101,7 @@ export const MetricsGrid = ({ onCountryDrillDown }: MetricsGridProps) => {
       deals: [
         { dealId: 'MAX-JP-001', bidRequests: 6420, bidResponses: 5680, adPlays: 4890, billableAdPlays: 4340, revenue: 1247800, screens: 280, performance: 92, status: 'on-track' as const },
         { dealId: 'MAX-JP-002', bidRequests: 5200, bidResponses: 4100, adPlays: 3650, billableAdPlays: 3250, revenue: 890400, screens: 245, performance: 78, status: 'below-threshold' as const },
-        { dealId: 'MAX-JP-003', dealId: 'MAX-JP-003', bidRequests: 6800, bidResponses: 5900, adPlays: 4700, billableAdPlays: 4300, revenue: 709400, screens: 322, performance: 85, status: 'on-track' as const }
+        { dealId: 'MAX-JP-003', bidRequests: 6800, bidResponses: 5900, adPlays: 4700, billableAdPlays: 4300, revenue: 709400, screens: 322, performance: 85, status: 'on-track' as const }
       ]
     },
     ttd: {
