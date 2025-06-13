@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -27,11 +28,7 @@ interface DealData {
   status: 'on-track' | 'below-threshold' | 'exceeding';
 }
 
-interface MetricsGridProps {
-  onCountryDrillDown?: () => void;
-}
-
-export const MetricsGrid = ({ onCountryDrillDown }: MetricsGridProps) => {
+export const MetricsGrid = () => {
   const [activeTab, setActiveTab] = useState('max');
   
   const dspData = {
@@ -276,8 +273,7 @@ export const MetricsGrid = ({ onCountryDrillDown }: MetricsGridProps) => {
       {metrics.map((metric, index) => (
         <Card 
           key={index} 
-          className="cyber-border bg-card/80 backdrop-blur hover-cyber-glow cursor-pointer transition-all"
-          onClick={onCountryDrillDown}
+          className="cyber-border bg-card/80 backdrop-blur hover-cyber-glow transition-all"
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
