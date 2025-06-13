@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { TrendingUp, TrendingDown, DollarSign, Target, Zap, AlertTriangle } from 'lucide-react';
+import { TrendingUp, TrendingDown, DollarSign, Target, Zap, Monitor } from 'lucide-react';
 
 interface Metric {
   title: string;
@@ -17,39 +17,39 @@ interface Metric {
 export const MetricsGrid = () => {
   const [metrics, setMetrics] = useState<Metric[]>([
     {
-      title: 'Bid Requests/sec',
-      value: '24,586',
-      change: 12.3,
-      progress: 78,
+      title: 'Impression Requests/min',
+      value: '8,432',
+      change: 15.7,
+      progress: 84,
       threshold: 85,
       icon: <Zap className="h-5 w-5" />,
       trend: 'up'
     },
     {
-      title: 'Win Rate',
-      value: '23.7%',
-      change: -2.1,
-      progress: 67,
-      threshold: 75,
+      title: 'Fill Rate',
+      value: '76.3%',
+      change: 4.2,
+      progress: 76,
+      threshold: 80,
       icon: <Target className="h-5 w-5" />,
-      trend: 'down'
+      trend: 'up'
     },
     {
       title: 'Revenue Today',
-      value: '$47,832',
-      change: 8.9,
-      progress: 89,
-      threshold: 50000,
+      value: '$94,670',
+      change: 12.1,
+      progress: 78,
+      threshold: 120000,
       icon: <DollarSign className="h-5 w-5" />,
       trend: 'up'
     },
     {
-      title: 'Discrepancies',
-      value: '2.3%',
-      change: -0.8,
-      progress: 23,
-      threshold: 5,
-      icon: <AlertTriangle className="h-5 w-5" />,
+      title: 'Active Screens',
+      value: '2,847',
+      change: -0.3,
+      progress: 95,
+      threshold: 3000,
+      icon: <Monitor className="h-5 w-5" />,
       trend: 'down'
     }
   ]);
@@ -58,12 +58,12 @@ export const MetricsGrid = () => {
     const interval = setInterval(() => {
       setMetrics(prev => prev.map(metric => ({
         ...metric,
-        value: metric.title === 'Bid Requests/sec' 
-          ? `${(Math.random() * 5000 + 22000).toFixed(0)}` 
+        value: metric.title === 'Impression Requests/min' 
+          ? `${(Math.random() * 2000 + 7000).toFixed(0)}` 
           : metric.value,
         progress: Math.min(100, Math.max(0, metric.progress + (Math.random() - 0.5) * 5))
       })));
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -94,7 +94,7 @@ export const MetricsGrid = () => {
             </div>
             <div className="space-y-2">
               <div className="flex justify-between text-xs">
-                <span>Progress</span>
+                <span>Performance</span>
                 <span>{metric.progress}%</span>
               </div>
               <Progress 

@@ -3,11 +3,11 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Brain, TrendingUp, Target, DollarSign, Zap } from 'lucide-react';
+import { Brain, TrendingUp, MapPin, DollarSign, Zap } from 'lucide-react';
 
 interface Recommendation {
   id: string;
-  type: 'bid_adjustment' | 'inventory' | 'targeting';
+  type: 'pricing' | 'inventory' | 'placement';
   priority: 'high' | 'medium' | 'low';
   title: string;
   description: string;
@@ -19,38 +19,38 @@ export const RecommendationsEngine = () => {
   const recommendations: Recommendation[] = [
     {
       id: '1',
-      type: 'bid_adjustment',
+      type: 'pricing',
       priority: 'high',
-      title: 'Increase Mobile Video Bids',
-      description: 'Mobile video inventory showing 89% win rate with 23% higher eCPM',
-      impact: '+$2,340 daily revenue',
-      confidence: 94
+      title: 'Increase Prime Time Rates',
+      description: 'High-traffic locations showing 95% fill rates during 7-9 AM commute window',
+      impact: '+$4,280 daily revenue',
+      confidence: 96
     },
     {
       id: '2',
       type: 'inventory',
       priority: 'medium',
-      title: 'Expand Premium CTV Sources',
-      description: 'Connected TV inventory from Roku/Samsung showing strong performance',
-      impact: '+15% reach expansion',
-      confidence: 78
+      title: 'Expand Transit Network',
+      description: 'Metro stations outperforming street-level screens by 34% eCPM',
+      impact: '+28% inventory value',
+      confidence: 81
     },
     {
       id: '3',
-      type: 'targeting',
+      type: 'placement',
       priority: 'high',
-      title: 'Geo-Targeting Optimization',
-      description: 'Reduce spend in underperforming regions, increase in APAC markets',
-      impact: '+18% efficiency gain',
-      confidence: 87
+      title: 'Optimize Geographic Mix',
+      description: 'Shift inventory focus from residential to commercial districts',
+      impact: '+22% engagement rates',
+      confidence: 89
     }
   ];
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'bid_adjustment': return <DollarSign className="h-4 w-4" />;
-      case 'inventory': return <Target className="h-4 w-4" />;
-      case 'targeting': return <TrendingUp className="h-4 w-4" />;
+      case 'pricing': return <DollarSign className="h-4 w-4" />;
+      case 'inventory': return <MapPin className="h-4 w-4" />;
+      case 'placement': return <TrendingUp className="h-4 w-4" />;
       default: return <Brain className="h-4 w-4" />;
     }
   };
@@ -70,7 +70,7 @@ export const RecommendationsEngine = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Brain className="h-5 w-5 text-primary" />
-            <CardTitle className="cyber-text-glow">Smart Recommendations</CardTitle>
+            <CardTitle className="cyber-text-glow">OOH Smart Recommendations</CardTitle>
           </div>
           <Badge className="bg-primary/20 text-primary border-primary/50">
             AI-Powered

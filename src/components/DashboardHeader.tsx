@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Activity, Zap, Globe, TrendingUp } from 'lucide-react';
+import { Activity, Zap, MapPin, TrendingUp } from 'lucide-react';
 
 export const DashboardHeader = () => {
   return (
@@ -13,10 +13,10 @@ export const DashboardHeader = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold cyber-text-glow">
-                Campaign Command Center
+                OOH Command Center
               </h1>
               <p className="text-muted-foreground">
-                Programmatic Advertising Mission Control
+                Digital Out-of-Home Supply-Side Platform
               </p>
             </div>
           </div>
@@ -24,21 +24,21 @@ export const DashboardHeader = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2 text-sm">
               <div className="w-2 h-2 rounded-full bg-primary neon-pulse"></div>
-              <span className="text-primary">Live Feed Active</span>
+              <span className="text-primary">Live Inventory Feed</span>
             </div>
             
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
               <div className="flex items-center space-x-1">
                 <Zap className="h-4 w-4" />
-                <span>DSP Connected: 3/3</span>
+                <span>Active Screens: 2,847</span>
               </div>
               <div className="flex items-center space-x-1">
-                <Globe className="h-4 w-4" />
-                <span>Global RTB</span>
+                <MapPin className="h-4 w-4" />
+                <span>Live Markets: 23</span>
               </div>
               <div className="flex items-center space-x-1">
                 <TrendingUp className="h-4 w-4" />
-                <span>+15.2% Performance</span>
+                <span>+18.4% Fill Rate</span>
               </div>
             </div>
           </div>

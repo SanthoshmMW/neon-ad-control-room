@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Activity, Zap, DollarSign, Target } from 'lucide-react';
+import { Activity, Monitor, DollarSign, MapPin } from 'lucide-react';
 
 interface DataEvent {
   id: string;
   timestamp: Date;
-  type: 'bid' | 'win' | 'impression' | 'revenue';
-  source: string;
+  type: 'impression' | 'fill' | 'revenue' | 'screen_status';
+  location: string;
   value: string;
   status: 'success' | 'warning' | 'error';
 }
@@ -17,23 +17,23 @@ export const LiveDataFeed = () => {
   const [events, setEvents] = useState<DataEvent[]>([]);
 
   const generateRandomEvent = (): DataEvent => {
-    const types: DataEvent['type'][] = ['bid', 'win', 'impression', 'revenue'];
-    const sources = ['DV360', 'TTD', 'MediaMath', 'Amazon DSP'];
+    const types: DataEvent['type'][] = ['impression', 'fill', 'revenue', 'screen_status'];
+    const locations = ['Times Square', 'LAX Terminal', 'Chicago Loop', 'Miami Beach', 'Vegas Strip'];
     const statuses: DataEvent['status'][] = ['success', 'success', 'success', 'warning', 'error'];
     
     const type = types[Math.floor(Math.random() * types.length)];
     const values = {
-      bid: `$${(Math.random() * 10).toFixed(2)}`,
-      win: `${(Math.random() * 100).toFixed(1)}%`,
-      impression: `${Math.floor(Math.random() * 1000)}`,
-      revenue: `$${(Math.random() * 100).toFixed(2)}`
+      impression: `${Math.floor(Math.random() * 500)} views`,
+      fill: `${(Math.random() * 100).toFixed(1)}% filled`,
+      revenue: `$${(Math.random() * 150).toFixed(2)}`,
+      screen_status: Math.random() > 0.8 ? 'Offline' : 'Online'
     };
 
     return {
       id: Math.random().toString(36).substr(2, 9),
       timestamp: new Date(),
       type,
-      source: sources[Math.floor(Math.random() * sources.length)],
+      location: locations[Math.floor(Math.random() * locations.length)],
       value: values[type],
       status: statuses[Math.floor(Math.random() * statuses.length)]
     };
@@ -43,19 +43,19 @@ export const LiveDataFeed = () => {
     const interval = setInterval(() => {
       setEvents(prev => {
         const newEvent = generateRandomEvent();
-        return [newEvent, ...prev.slice(0, 9)]; // Keep only 10 most recent
+        return [newEvent, ...prev.slice(0, 9)];
       });
-    }, 1000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
 
   const getEventIcon = (type: string) => {
     switch (type) {
-      case 'bid': return <Target className="h-3 w-3" />;
-      case 'win': return <Zap className="h-3 w-3" />;
       case 'impression': return <Activity className="h-3 w-3" />;
+      case 'fill': return <Monitor className="h-3 w-3" />;
       case 'revenue': return <DollarSign className="h-3 w-3" />;
+      case 'screen_status': return <MapPin className="h-3 w-3" />;
       default: return <Activity className="h-3 w-3" />;
     }
   };
@@ -75,7 +75,7 @@ export const LiveDataFeed = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Activity className="h-5 w-5 text-primary" />
-            <CardTitle className="cyber-text-glow">Live Data Feed</CardTitle>
+            <CardTitle className="cyber-text-glow">Live OOH Feed</CardTitle>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-2 h-2 rounded-full bg-primary neon-pulse" />
@@ -96,7 +96,7 @@ export const LiveDataFeed = () => {
                 </div>
                 <div>
                   <div className="text-sm font-medium capitalize">
-                    {event.type} - {event.source}
+                    {event.type.replace('_', ' ')} - {event.location}
                   </div>
                   <div className="text-xs text-muted-foreground">
                     {event.timestamp.toLocaleTimeString()}
@@ -117,7 +117,7 @@ export const LiveDataFeed = () => {
           {events.length === 0 && (
             <div className="text-center text-muted-foreground py-8">
               <Activity className="h-8 w-8 mx-auto mb-2 opacity-50" />
-              <p>Waiting for live data...</p>
+              <p>Waiting for OOH data...</p>
             </div>
           )}
         </div>

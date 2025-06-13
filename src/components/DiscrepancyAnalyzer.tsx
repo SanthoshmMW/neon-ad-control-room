@@ -8,9 +8,9 @@ import { AlertCircle, CheckCircle, Clock, Zap } from 'lucide-react';
 
 interface Discrepancy {
   id: string;
-  type: 'impression' | 'revenue' | 'timeout';
+  type: 'impression' | 'revenue' | 'connectivity';
   severity: 'high' | 'medium' | 'low';
-  source: string;
+  location: string;
   description: string;
   probability: number;
   status: 'active' | 'investigating' | 'resolved';
@@ -22,27 +22,27 @@ export const DiscrepancyAnalyzer = () => {
       id: '1',
       type: 'impression',
       severity: 'high',
-      source: 'DV360',
-      description: 'Impression mismatch: 12% variance detected',
-      probability: 89,
+      location: 'Times Square Billboard #47',
+      description: 'Impression count mismatch: 18% variance vs measurement partner',
+      probability: 92,
       status: 'active'
     },
     {
       id: '2',
-      type: 'timeout',
+      type: 'connectivity',
       severity: 'medium',
-      source: 'TTD',
-      description: 'Bid timeout spikes in APAC regions',
-      probability: 67,
+      location: 'LAX Terminal B Screens',
+      description: 'Intermittent connectivity causing content delivery delays',
+      probability: 73,
       status: 'investigating'
     },
     {
       id: '3',
       type: 'revenue',
       severity: 'low',
-      source: 'MediaMath',
-      description: 'Revenue tracking delay ~2.3 minutes',
-      probability: 34,
+      location: 'Chicago Transit Network',
+      description: 'Revenue reporting delay from transit authority API',
+      probability: 45,
       status: 'resolved'
     }
   ]);
@@ -71,7 +71,7 @@ export const DiscrepancyAnalyzer = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <AlertCircle className="h-5 w-5 text-primary" />
-            <CardTitle className="cyber-text-glow">Discrepancy Analyzer</CardTitle>
+            <CardTitle className="cyber-text-glow">OOH Discrepancy Monitor</CardTitle>
           </div>
           <Button size="sm" className="cyber-gradient text-background hover:opacity-80">
             <Zap className="h-4 w-4 mr-2" />
@@ -91,7 +91,7 @@ export const DiscrepancyAnalyzer = () => {
                   {getStatusIcon(discrepancy.status)}
                   <div>
                     <h4 className="font-semibold text-foreground">
-                      {discrepancy.source} - {discrepancy.type}
+                      {discrepancy.location}
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       {discrepancy.description}
